@@ -1,0 +1,11 @@
+{
+  "name": "hajat-odoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "addons": "git clone -b enterprise-addons https://thegit.dev/wettayeb/odoo-enterprise.git addons"
+  },
+  "author": "",
+  "license": "ISC"
+}
