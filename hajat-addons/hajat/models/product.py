@@ -26,19 +26,15 @@ class ProductTemplate(models.Model):
         result = super(ProductTemplate, self).unlink()
         return result
     def send_webhook(self, product, status):
-        # image_base64 = product.image_1920 and base64.b64encode(product.image_1920).decode('utf-8') or None
-        webhook_url = 'https://webhook.site/fccac2e2-56f4-47b9-9a90-937ccf2f952f'
-        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-
+        webhook_url = 'https://webhook.site/c2e3db55-1a90-4b40-94c4-db16d935bd95'
         data = {
             'id': product.id,
             'name': product.name,
-            'default_code': product.default_code,
             'list_price': product.list_price,
-            'description': product.description_sale,
-            'image': f"{base_url}/api/product/{product.id}/image",
-            'category': product.categ_id.name,
-            'type': product.type,
+            'brand_id': product.brand_id,
+            'qty_available': product.qty_available,
+            'public_categ_ids': product.public_categ_ids.name,
+            'uom_id': product.uom_id,
             'status': status
         }
         try:
