@@ -9,7 +9,7 @@ services:
     environment:
       - HOST=db
       - USER=melkmeshi
-      - PASSWORD=MohElk13241?
+      - PASSWORD=MohElk13241
     volumes:
       - ./addons:/mnt/extra-addons
       - ./hajat-addons:/mnt/hajat-addons
@@ -20,6 +20,6 @@ services:
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=melkmeshi
-      - POSTGRES_PASSWORD=MohElk13241?
+      - POSTGRES_PASSWORD=MohElk13241
     volumes:
       - ./pg_data:/var/lib/postgresql/data
