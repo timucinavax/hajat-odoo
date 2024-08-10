@@ -34,7 +34,9 @@ class ProductTemplate(models.Model):
             'brand_id': product.brand_id.id if product.brand_id else None,  # Convert to ID
             'brand_name': product.brand_id.name if product.brand_id else None,  # Convert to Name
             'qty_available': product.qty_available,
-            'public_categ_ids': [categ.name for categ in product.public_categ_ids] if product.public_categ_ids else [],  # Convert to list of names
+            'public_categ_ids': [
+                {'id': categ.id, 'name': categ.name} for categ in product.public_categ_ids
+            ] if product.public_categ_ids else [],  # Convert to list of dicts with id and name
             'uom_id': product.uom_id.id if product.uom_id else None,  # Convert to ID
             'uom_name': product.uom_id.name if product.uom_id else None,  # Convert to Name
             'status': status
