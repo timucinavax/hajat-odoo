@@ -31,10 +31,12 @@ class ProductTemplate(models.Model):
             'id': product.id,
             'name': product.name,
             'list_price': product.list_price,
-            'brand_id': product.brand_id,
+            'brand_id': product.brand_id.id if product.brand_id else None,  # Convert to ID
+            'brand_name': product.brand_id.name if product.brand_id else None,  # Convert to Name
             'qty_available': product.qty_available,
-            'public_categ_ids': product.public_categ_ids.name,
-            'uom_id': product.uom_id,
+            'public_categ_ids': [categ.name for categ in product.public_categ_ids] if product.public_categ_ids else [],  # Convert to list of names
+            'uom_id': product.uom_id.id if product.uom_id else None,  # Convert to ID
+            'uom_name': product.uom_id.name if product.uom_id else None,  # Convert to Name
             'status': status
         }
         try:
