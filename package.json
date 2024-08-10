@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "addons": "git clone -b enterprise-addons https://thegit.dev/wettayeb/odoo-enterprise.git addons"
+    "addons": "git clone -b enterprise-addons https://gitlab.com/hzone/odoo-enterprise.git addons"
   },
   "author": "",
   "license": "ISC"
