@@ -8,8 +8,8 @@ services:
       - "8069:8069"
     environment:
       - HOST=db
-      - USER=melkmeshi
-      - PASSWORD=MohElk13241
+      - USER=odoo
+      - PASSWORD=myodoo
     volumes:
       - ./addons:/mnt/extra-addons
       - ./hajat-addons:/mnt/hajat-addons
@@ -19,7 +19,7 @@ services:
     image: postgres:15
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_USER=melkmeshi
-      - POSTGRES_PASSWORD=MohElk13241
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=myodoo
     volumes:
       - ./pg_data:/var/lib/postgresql/data
