@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  odoo:
+    image: odoo:17.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    environment:
+      - HOST=db
+      - USER=melkmeshi
+      - PASSWORD=MohElk13241?
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./hajat-addons:/mnt/hajat-addons
+      - ./config:/etc/odoo
+      - ./odoo_data:/var/lib/odoo
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=melkmeshi
+      - POSTGRES_PASSWORD=MohElk13241?
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data

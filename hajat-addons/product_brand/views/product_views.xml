@@ -1,0 +1,65 @@
+<odoo>
+    <!-- Inherit the product template form view to add the brand field -->
+    <record id="view_product_template_form_brand" model="ir.ui.view">
+        <field name="name">product.template.form.brand</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="barcode" position="after">
+                <field name="brand_id"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Create an action for the product brand model -->
+    <record id="action_product_brand" model="ir.actions.act_window">
+        <field name="name">Product Brands</field>
+        <field name="res_model">product.brand</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Create a form view for the product brand model -->
+    <record id="view_product_brand_form" model="ir.ui.view">
+        <field name="name">product.brand.form</field>
+        <field name="model">product.brand</field>
+        <field name="arch" type="xml">
+            <form string="Product Brand">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="Brand Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <div class="oe_left oe_avatar">
+                                <field name="image" widget="image" class="oe_avatar"
+                                    options='{"size": [120, 120]}'/>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Create a tree view for the product brand model -->
+    <record id="view_product_brand_tree" model="ir.ui.view">
+        <field name="name">product.brand.tree</field>
+        <field name="model">product.brand</field>
+        <field name="arch" type="xml">
+            <tree string="Product Brands">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Add a menu item for product brands under Products in the Sales menu -->
+    <menuitem id="product_brand_menu" name="Product Brands"
+              parent="sale.product_menu_catalog" action="action_product_brand"/>
+</odoo>
