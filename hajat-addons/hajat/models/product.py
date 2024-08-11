@@ -26,19 +26,18 @@ class ProductTemplate(models.Model):
         result = super(ProductTemplate, self).unlink()
         return result
     def send_webhook(self, product, status):
-        webhook_url = 'https://webhook.site/c2e3db55-1a90-4b40-94c4-db16d935bd95'
+        if not product.brand_id:
+            return
+        webhook_url = 'https://hajat.com.ly/api/products/webhook'
         data = {
             'id': product.id,
             'name': product.name,
-            'list_price': product.list_price,
-            'brand_id': product.brand_id.id if product.brand_id else None,  # Convert to ID
-            'brand_name': product.brand_id.name if product.brand_id else None,  # Convert to Name
             'qty_available': product.qty_available,
-            'public_categ_ids': [
-                {'id': categ.id, 'name': categ.name} for categ in product.public_categ_ids
-            ] if product.public_categ_ids else [],  # Convert to list of dicts with id and name
-            'uom_id': product.uom_id.id if product.uom_id else None,  # Convert to ID
-            'uom_name': product.uom_id.name if product.uom_id else None,  # Convert to Name
+            'description': product.description_sale,
+            'list_price': product.list_price,
+            'categoryId': product.public_categ_ids[0].id if product.public_categ_ids else None,
+            'brandId': product.brand_id.id if product.brand_id else None,
+            'uomId': product.uom_id.id if product.uom_id else None, 
             'status': status
         }
         try:

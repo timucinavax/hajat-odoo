@@ -1,3 +1,5 @@
 addons/*
 pg_data/*
-*__pycache__/*
+*__pycache__*
+odoo_data
+*.pyc
