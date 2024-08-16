@@ -14,12 +14,6 @@
                     position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
-                <xpath expr="//form[1]/header[1]/button[@name='333']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>
-                <xpath expr="//form[1]/header[1]/button[@name='333'][2]" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>
                 <xpath expr="//form[1]/header[1]/button[@name='action_quotation_send'][4]"
                     position="attributes">
                     <attribute name="invisible">True</attribute>
@@ -30,7 +24,6 @@
                 <xpath expr="//button[@name='action_cancel']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
-                <!-- Your Odoo Studio generated code ends here -->
             </field>
         </record>
     </data>
