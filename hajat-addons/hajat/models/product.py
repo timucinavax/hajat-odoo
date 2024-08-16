@@ -1,8 +1,9 @@
 from odoo import models, fields, api # type: ignore
 import requests # type: ignore
 import logging
-import base64
+from ..shared.config import config
 
+import os
 _logger = logging.getLogger(__name__)
 
 class ProductTemplate(models.Model):
@@ -28,7 +29,8 @@ class ProductTemplate(models.Model):
     def send_webhook(self, product, status):
         if not product.brand_id:
             return
-        webhook_url = 'https://hajat.com.ly/api/products/webhook'
+        _logger.info(f"Sending webhook for product {product.id} with status {status} {config.backend_webhook_url}")
+        webhook_url = f'{config.backend_webhook_url}/api/products/webhook'
         data = {
             'id': product.id,
             'name': product.name,

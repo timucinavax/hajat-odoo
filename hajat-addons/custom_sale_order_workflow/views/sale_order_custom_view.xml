@@ -1,0 +1,85 @@
+<odoo>
+    <record id="view_order_form_custom" model="ir.ui.view">
+        <field name="name">sale.order.form.custom</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+
+
+            <!-- Insert the custom_status field as a label above the Expiration field -->
+            <xpath expr="//group[@name='order_details']/field[@name='validity_date']"
+                position="before">
+                <label for="custom_status" string="State" />
+                <div>
+                    <field name="custom_status" readonly="1" />
+                </div>
+            </xpath>
+
+            <!-- Add buttons to trigger the custom actions -->
+            <xpath expr="//header" position="inside">
+                <!-- Button to trigger action_confirm_order -->
+                <button name="action_confirm_order"
+                    string="Confirm Order"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="state != 'draft'" />
+
+                <!-- Button to trigger action_prepare_order -->
+                <button name="action_prepare_order"
+                    string="Prepare Order"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="state != 'sale' or custom_status != 'confirmed'" />
+
+                <!-- Button to trigger action_ready_for_pickup -->
+                <button name="action_ready_for_pickup"
+                    string="Ready for Pickup"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="state != 'sale' or custom_status != 'preparing'" />
+
+                <!-- Button to trigger action_out_for_delivery -->
+                <button name="action_out_for_delivery"
+                    string="Out for Delivery"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="state != 'sale' or custom_status != 'ready'" />
+
+                <!-- Button to trigger action_delivered -->
+                <button name="action_delivered"
+                    string="Delivered"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="state != 'sale' or custom_status != 'out_for_delivery'" />
+
+                <!-- Button to trigger action_cancel_order -->
+                <button name="action_cancel_order"
+                    string="Cancel Order"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="state not in ['draft', 'sent', 'sale'] or custom_status in ['delivered', 'returned']" />
+
+                <!-- Button to trigger action_delay_order -->
+                <button name="action_delay_order"
+                    string="Delay Order"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="custom_status not in ['preparing', 'ready', 'out_for_delivery']" />
+
+                <!-- Button to trigger action_partially_deliver -->
+                <button name="action_partially_deliver"
+                    string="Partially Deliver"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="state != 'sale' or custom_status != 'out_for_delivery'" />
+
+                <!-- Button to trigger action_return_order -->
+                <button name="action_return_order"
+                    string="Return Order"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="state != 'sale' or custom_status != 'delivered'" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

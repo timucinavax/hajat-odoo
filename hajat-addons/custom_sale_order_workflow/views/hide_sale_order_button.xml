@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <record id="view_order_form_custom_override" model="ir.ui.view">
+            <field name="name">sale.order.form.custom.override</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <!-- Your Odoo Studio generated code starts here -->
+                <xpath expr="//form[1]/header[1]/button[@name='action_confirm'][2]"
+                    position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form[1]/header[1]/button[@name='action_quotation_send']"
+                    position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form[1]/header[1]/button[@name='333']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form[1]/header[1]/button[@name='333'][2]" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form[1]/header[1]/button[@name='action_quotation_send'][4]"
+                    position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_preview_sale_order']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <!-- Your Odoo Studio generated code ends here -->
+            </field>
+        </record>
+    </data>
+</odoo>

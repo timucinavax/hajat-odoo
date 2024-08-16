@@ -23,5 +23,6 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=myodoo
+    command: "-c log_statement=all"
     volumes:
       - ./pg_data:/var/lib/postgresql/data
