@@ -3,10 +3,11 @@ from odoo import models, fields
 class ProductBrand(models.Model):
     _name = 'product.brand'
     _description = 'Product Brand'
+    _order = 'sequence, name'
 
     name = fields.Char('Brand Name', required=True)
-    description = fields.Text('Description')
     image = fields.Binary('Image')
+    sequence = fields.Integer('Sequence', default=10)
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'

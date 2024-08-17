@@ -3,10 +3,10 @@
     <record id="view_product_template_form_brand" model="ir.ui.view">
         <field name="name">product.template.form.brand</field>
         <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
         <field name="arch" type="xml">
             <field name="barcode" position="after">
-                <field name="brand_id"/>
+                <field name="brand_id" />
             </field>
         </field>
     </record>
@@ -26,19 +26,19 @@
             <form string="Product Brand">
                 <sheet>
                     <div class="oe_title">
-                        <label for="name" class="oe_edit_only"/>
+                        <label for="name" class="oe_edit_only" />
                         <h1>
-                            <field name="name" placeholder="Brand Name"/>
+                            <field name="name" placeholder="Brand Name" />
                         </h1>
                     </div>
                     <group>
                         <group>
-                            <field name="description"/>
+                            <field name="description" />
                         </group>
                         <group>
                             <div class="oe_left oe_avatar">
                                 <field name="image" widget="image" class="oe_avatar"
-                                    options='{"size": [120, 120]}'/>
+                                    options='{"size": [120, 120]}' />
                             </div>
                         </group>
                     </group>
@@ -53,13 +53,14 @@
         <field name="model">product.brand</field>
         <field name="arch" type="xml">
             <tree string="Product Brands">
-                <field name="name"/>
-                <field name="description"/>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="description" />
             </tree>
         </field>
     </record>
 
     <!-- Add a menu item for product brands under Products in the Sales menu -->
     <menuitem id="product_brand_menu" name="Product Brands"
-              parent="sale.product_menu_catalog" action="action_product_brand"/>
+        parent="sale.product_menu_catalog" action="action_product_brand" />
 </odoo>

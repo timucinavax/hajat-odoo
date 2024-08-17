@@ -2,8 +2,6 @@ from odoo import models, fields, api # type: ignore
 import requests # type: ignore
 import logging
 from ..shared.config import config
-
-import os
 _logger = logging.getLogger(__name__)
 
 class ProductTemplate(models.Model):
@@ -35,7 +33,7 @@ class ProductTemplate(models.Model):
             'id': product.id,
             'name': product.name,
             'qty_available': product.qty_available,
-            'description': product.description_sale,
+            'description': product.description_sale if product.description_sale else None,
             'list_price': product.list_price,
             'categoryId': product.public_categ_ids[0].id if product.public_categ_ids else None,
             'brandId': product.brand_id.id if product.brand_id else None,

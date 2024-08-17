@@ -5,3 +5,4 @@ class ResPartner(models.Model):
 
     longitude = fields.Float(string='Longitude')
     latitude = fields.Float(string='Latitude')
+    is_verified = fields.Boolean(string="Is Verified", default=False)
