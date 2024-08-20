@@ -7,7 +7,6 @@ _logger = logging.getLogger(__name__)
 
 class ProductBrand(models.Model):
     _inherit = 'product.brand'
-    sequence = fields.Integer('Sequence', default=10)
 
     @api.model
     def create(self, vals):

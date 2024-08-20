@@ -21,7 +21,8 @@
                 <sheet>
                     <group>
                         <field name="sequence" />
-                        <field name="image" widget="image" options="{'preview_image': 'image'}" />
+                        <field name="image" widget="image" class="oe_avatar"
+                            options='{"size": [120, 120]}' />
                     </group>
                 </sheet>
             </form>

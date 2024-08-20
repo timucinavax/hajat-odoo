@@ -1,6 +1,6 @@
 {
-    'name': 'Product Brand',
-    'version': '1.0',
+    'name': 'Product Brand with Sequence',
+    'version': '1.1',
     'category': 'Product',
     'summary': 'Add brand to products',
     'depends': ['product', 'sale'],
