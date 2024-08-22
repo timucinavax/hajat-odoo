@@ -7,7 +7,7 @@ _logger = logging.getLogger(__name__)
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
     sequence = fields.Integer('Sequence', default=10)
-
+    _order = 'sequence, id'
 
     @api.model
     def create(self, vals):

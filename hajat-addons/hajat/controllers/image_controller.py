@@ -7,7 +7,7 @@ class ImageController(http.Controller):
 
     @http.route('/api/product/<int:product_id>/image', type='http', auth='public')
     def get_product_image(self, product_id, **kwargs):
-        product = request.env['product.product'].sudo().browse(product_id)
+        product = request.env['template'].sudo().browse(product_id)
         if not product:
             return self._get_placeholder_image()
 
